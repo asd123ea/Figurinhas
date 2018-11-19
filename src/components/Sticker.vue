@@ -4,12 +4,27 @@
         <hr>
         <h2>Sticker Number #{{ this.$route.params.number }}</h2>
         <hr>
-        <h3>Details</h3>
-        <p>
-            Name: 
-            <br>
-            {{ this.$route.params }}
-        </p>
+        <div class="row">
+            <div class="col-sm-6 offset-md-3">
+                <div class="card">
+                    <img class="sticker-img text-center" :src="sticker.img"/>
+                    <div class="card-body">
+                        <h4 class="card-title text-center">{{ sticker.name }}</h4>
+                        <p class="card-text">Aqui é Body Builder Ipsum PORRA! É esse que a gente quer, é ele que nóis vamo buscar. Aqui é Body Builder Ipsum PORRA! Ó o homem ali porra!, é 13 porra! Ó o homem ali porra!, é 13 porra! É verão o ano todo vem cumpadi.
+
+ Vo derrubar tudo essas árvore do parque ibirapuera. Aqui é Body Builder Ipsum PORRA! Aqui é bodybuilder porra! É esse que a gente quer, é ele que nóis vamo buscar.
+
+ Vai subir árvore é o caralho porra! Que não vai dá rapaiz, não vai dá essa porra. Vem porra! Ó o homem ali porra!, é 13 porra! Eita porra!, tá saindo da jaula o monstro!
+
+ Ele tá olhando pra gente. Vo derrubar tudo essas árvore do parque ibirapuera. Aqui é bodybuilder porra!
+
+ É nóis caraio é trapezera buscando caraio! Aqui é bodybuilder porra! Aqui é Body Builder Ipsum PORRA! É esse que a gente quer, é ele que nóis vamo buscar.
+
+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <a href="javascript:history.go(-1)" class="btn btn-primary">Back</a>
     </div>
 </template>
@@ -19,13 +34,15 @@ import axios from 'axios'
 
 export default {
     name: 'Sticker',
-    created() {
-        console.log(this.showSticker)
-    },
     data() {
         return {
             stickers: [],
+            sticker: {},
         }
+    },
+    created() {
+        this.defineMocks()
+        this.sticker = this.stickers.find(o => o.number == this.$route.params.number )
     },
     methods: {
         defineMocks() {
@@ -47,8 +64,16 @@ export default {
                 this.stickers.push({ number: 69, name: 'Edinson Cavani', 
                     total: 74, img: 'https://i.pinimg.com/originals/e9/ea/79/e9ea796f73d6e1b503dae131d5ef17c1.jpg' })
             }
+            
         }
     },
 }
 </script>
+<style>
+.sticker-img {
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+}
+</style>
 

@@ -16,8 +16,7 @@ export default new Router({
     }, {
       path: '/:number',
       name: 'Sticker',
-      component: Sticker,
-      props: { showSticker: 'plz Mother F*!@#' }
+      component: Sticker
     }
   ]
 })
